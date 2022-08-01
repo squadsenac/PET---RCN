@@ -106,3 +106,38 @@ margin: auto;
     padding-right: 0px;
     transform: translateX(-20px);
 }
+
+.left-side-app{
+    display: flex;
+    flex: 1, 1, auto;
+    width: 102.5%;
+    height: 1000px;
+    margin: 0;
+    padding-right: 0px;
+    box-align: left;
+    transform: translateX(-20px);
+}
+
+.right-side-app{
+    display: flex;
+    width: 202.5%;
+    height: 1000px;
+    margin: right;
+    justify-content: end;
+    padding-right: 0px;
+    box-align: right;
+    transform: translateX(-20px);
+}
+
+.boxes{
+    float: left;
+    margin: 0px;
+}
+
+.header-prods-compras{
+    font-size: 16px;
+}
+
+.header-prods{
+    font-size: 16px;
+}
