@@ -97,3 +97,12 @@ margin: auto;
     background-color: lightgray;
     margin-top: 0px;
 }
+
+.body-app{
+    display: flex;
+    width: 102.5%;
+    height: 1000px;
+    margin: auto;
+    padding-right: 0px;
+    transform: translateX(-20px);
+}
