@@ -1,10 +1,17 @@
+.body_index{
+    color:black;
+    background-color: white;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+}
+
 body{
-color:black;
-background-color: white;
-font-size: 20px;
-font-family: Arial, Helvetica, sans-serif;
-padding-left: 20px;
-margin: auto;
+    color:black;
+    background-color: white;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
 }
 
 .header_geral{
@@ -100,11 +107,11 @@ margin: auto;
 
 .body-app{
     display: flex;
-    width: 102.5%;
+    width: 100%;
     height: 1000px;
     margin: auto;
-    padding-right: 0px;
-    transform: translateX(-20px);
+    justify-content: center;
+    transform: translateX(0px);
 }
 
 .left-side-app{
@@ -115,18 +122,18 @@ margin: auto;
     margin: 0;
     padding-right: 0px;
     box-align: left;
-    transform: translateX(-20px);
+    transform: translateX(0px);
 }
 
 .right-side-app{
     display: flex;
-    width: 202.5%;
+    width: 100%;
     height: 1000px;
-    margin: right;
+    margin: left;
     justify-content: end;
     padding-right: 0px;
     box-align: right;
-    transform: translateX(-20px);
+    transform: translateX(0px);
 }
 
 .boxes{
@@ -140,4 +147,43 @@ margin: auto;
 
 .header-prods{
     font-size: 16px;
+}
+
+.it_nome_plu{
+    margin-top: 8px;
+}
+
+.it_nome_plu h2{
+    font-weight: 550;
+}
+
+.it_nome_plu h4{
+    font-size: 18px;
+}
+
+
+.it_tabs_styles{
+    border: 0px;
+    margin-top: 25px;
+}
+
+#home-tab{
+    border: 0;
+    margin-left: -17px;
+}
+
+#profile-tab{
+    border: 0;
+}
+
+.descricao{
+    font-size: 15px;
+}
+
+.it_descs{
+    margin-top: 15px;
+}
+
+.it_subtitulo{
+    margin-top: 25px;
 }
