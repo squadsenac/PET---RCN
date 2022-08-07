@@ -1,0 +1,191 @@
+.body_index{
+    color:black;
+    background-color: white;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+}
+
+body{
+    color:black;
+    background-color: white;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+}
+
+.header_geral{
+    background-color: darkgray;
+    max-height: 90px;
+}
+
+.icones_header{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    padding: 15px; 
+    margin: auto;
+}
+
+.icones_header .img_header{
+    width: 50px;
+    margin-left: 75px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.labels_headers{
+    text-align: center;
+    display: flex;
+    font-size: 13px;
+    color: black;
+    flex-direction: row;
+    transform: translateX(69px);
+}
+
+.card-body{
+    text-align: center !important;
+    padding: 5px; 
+}
+
+.card{
+    background-color: transparent;
+    border: 0px;
+    padding: 0;
+}
+
+.menu_nav{
+    display: flex;
+    font-size: 13px;
+    color: black !important;
+    background-color: darkgrey;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0px;
+    height: 26px;
+}
+
+.nav-link{
+    color: black;
+    transform: translateY(-5px);
+}
+
+.lista-estoque{
+    border-top: 1px solid darkgray;
+    margin-top: 5px;
+}
+
+#btn-add{
+    display: flex;
+    justify-content:flex-end;
+    padding-left: 0px;
+    padding-right: 19px;
+    padding-bottom: 5px;
+}
+
+#btn-organizar{
+    background-color: transparent;
+    color: black;
+    border: 0px;
+    font-weight: 600;
+    transform: translateY(9px);
+}
+
+.nome-pagina{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header-estoque{
+    background-color: lightgray;
+    margin-top: 0px;
+}
+
+.body-app{
+    display: flex;
+    width: 100%;
+    height: 1000px;
+    margin-left: 10px;
+    justify-content: center;
+}
+
+.left-side-app{
+    display: flex;
+    flex: 1, 1, auto;
+    width: 100%;
+    height: 1000px;
+    margin-left: 15px;
+    padding-right: 0px;
+    box-align: left;
+}
+
+.right-side-app{
+    display: flex;
+    width: 200%;
+    height: 1000px;
+    margin-left: 15px;
+    justify-content: end;
+    padding-right: 0px;
+    box-align: right;
+    transform: translateX(0px);
+}
+
+.boxes{
+    float: left;
+    margin: 0px;
+}
+
+.itens-prod{
+    margin-left: 10px;
+}
+
+.header-prods-compras{
+    font-size: 16px;
+}
+
+.header-prods{
+    font-size: 16px;
+}
+
+.it_nome_plu{
+    margin-top: 8px;
+}
+
+.it_nome_plu h2{
+    font-weight: 550;
+}
+
+.it_nome_plu h4{
+    font-size: 18px;
+}
+
+
+.it_tabs_styles{
+    border: 0px;
+    margin-top: 25px;
+}
+
+#home-tab{
+    border: 0;
+    margin-left: -17px;
+}
+
+#profile-tab{
+    border: 0;
+}
+
+.descricao{
+    font-size: 15px;
+}
+
+.it_descs{
+    margin-top: 15px;
+}
+
+.it_subtitulo{
+    margin-top: 25px;
+}
