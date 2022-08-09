@@ -5,8 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mysql = require('mysql2');
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var database = require('./routes/database');
 
 var app = express();
 
@@ -25,7 +27,7 @@ app.use('/users', usersRouter);
 
 //database
 
-const connection = mysql.createConnection(
+const con = mysql.createConnection(
   {
       host: "127.0.0.1",
       user: "root",
@@ -34,11 +36,10 @@ const connection = mysql.createConnection(
   }
 );
 
-connection.connect((error) => {
+con.connect((error) => {
   if(error) throw error;
-  console.log('Conexão estabelecida com sucesso: id ' + connection.threadId);
+  console.log('Conexão estabelecida com sucesso: id ' + con.threadId);
 });
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,3 +58,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+

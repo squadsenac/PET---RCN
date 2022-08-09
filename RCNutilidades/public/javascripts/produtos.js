@@ -59,3 +59,10 @@ function inserirProduto(nome, marca, qtd, setor, unid, preco_compra, preco_venda
 
    
 }
+
+export{
+    inserirProduto,
+    produto,
+    venda,
+    codprods
+}

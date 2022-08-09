@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var rcn_db = require("./database");  
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -60,6 +63,12 @@ router.get('/usuarios/', function(req, res, next) {
 
 router.get('/vendas/', function(req, res, next) {
   res.render('vendas', { title: 'RCN Utilidades - Estoque' });
+});
+
+router.post('/db/', urlencodedParser,function(req, res, next){
+
+
+  
 });
 
 module.exports = router;
