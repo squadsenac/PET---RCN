@@ -11,10 +11,12 @@
 </head>
 <body style="overflow: hidden">
 
+{{#each rows}}
     <div class="it_nome_plu">
-        <h2>Item 0</h2>
-        <h4>PLU 1234512</h4>
+        <h2>{{this.nome}}</h2>
+        <h4>Código: {{this.codProduto}}</h4>
     </div>
+{{/each}}
 
     <div class="it_tabs_styles">
         <ul class="nav nav-tabs" id="it_tabs" role="tablist">  
@@ -30,25 +32,45 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             
-            <div class="it_descs">
-                <p class="descricao">Tipo de Item:</p>
-                <div id="it_tipo"></div>
-                <p class="descricao">Código:</p>
-                <div id="it_cod"></div>
-                <p class="descricao">Unidade:</p>
-                <div id="it_uni"></div>
-                <p class="descricao">Departamento:</p>
-                <div id="it_dept"></div>
-                <p class="descricao">Adicionado por:</p>
-                <div id="it_addpor"></div>
-                <p class="descricao">Preço de compra:</p>
-                <div id="it_prcomp"></div>
-                <p class="descricao">Preço de venda:</p>
-                <div id="it_prvend"></div>
-                <p class="descricao">Quantidade/estoque:</p>
-                <div id="it_qtd"></div>
-            
+            <table class="it_descs">
+               {{#each rows}}
+                 <tr>
+                    <th class="descricao">Código:</th>
+                    <td>{{this.codProduto}}</td>
+                 </tr>
+                 <tr>
+                    <th class="descricao">Nome:</th>
+                    <td>{{this.nome}}</td>
+                 </tr>
+                 <tr>
+                    <th class="descricao">Unidade:</th>
+                    <td>{{this.unidade}}</td>
+                 </tr>
+                 <tr>
+                     <th class="descricao">Setor:</th>
+                     <td>{{this.setor}}</td>
+                 </tr>
+                 <tr>
+                     <th class="descricao">Vendedor:</th>
+                     <td>{{this.vendedor}}</td>
+                 </tr>
+                 <tr>
+                    <th class="descricao">Preço de Compra:</th>
+                    <td>{{this.preco_unid_compra}}</td>
+                 </tr>
+                 <tr>
+                    <th class="descricao">Preço de Venda:</th>
+                    <td>{{this.preco_unid_venda}}</td>
+                 </tr>
+                 <tr>
+                     <th class="descricao">Quantidade de Estoque:</th>
+                     <td>{{this.quantidadeEstoque}}</td>
+                 </tr>
+                {{/each}}
+            </table>
 
+            <div class="it_descs">
+  
                 <p class="it_subtitulo">Dados de Vendas</p>
 
                 <hr>

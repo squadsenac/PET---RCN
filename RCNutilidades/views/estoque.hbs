@@ -32,7 +32,6 @@
     
             <div class="col-6" id="btn-add"> 
                 <button type="button" class="btn btn-primary">+ Novo</button>
-                <button type="button" class="btn btn-danger"><img src="/images/lata-lixo.png" alt="lata-lixo" style="width: 20px; padding: 1px;"></button>
             </div>
         </div>
     </div>
@@ -43,52 +42,42 @@
                     <table class="table table-hover">
                         <thead>
                         <tr class="header-prods">
-                            <th scope="col"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                            {{!-- <th scope="col"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th> --}}
                             <th scope="col">NOME</th>
                             <th scope="col">MARCA</th>
                             <th scope="col">COD.</th>
                             <th scope="col">QTD.</th>
+                            <th scope="col">PREÇO/COMPRA</th>
+                            <th scope="col">PREÇO/VENDA</th>
                             <th scope="col">SETOR</th>
                             <th scope="col">UNID.</th>
-                            <th scope="col">ULTIMA TRANSAÇÂO</th>
+                            <th scope="col">AÇÕES</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="items-prods">
-                            <th scope="row"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                            <td><a class="link-info" style="text-decoration:none;" href="/detalhes/" target="_self">Baby Bliss</a></td>
-                            <td>Jurema</td>
-                            <td>2347</td>
-                            <td>43</td>
-                            <td>Eletro</td>
-                            <td>unitário</td>
-                            <td>Venda - 12/06/22</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                            <td><a class="link-info" style="text-decoration:none;" href="/detalhes/" target="_self">Liquidificador</a></td>
-                            <td>Mondial</td>
-                            <td>2500</td>
-                            <td>50</td>
-                            <td>Eletro</td>
-                            <td>unitário</td>
-                            <td>Reposição - 12/06/22</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                            <td ><a class="link-info" style="text-decoration:none;" href="/detalhes/" target="_self">Faca Elétrica</a></td>
-                            <td>Wallita</td>
-                            <td>7659</td>
-                            <td>12</td>
-                            <td>Eletro</td>
-                            <td>unitário</td>
-                            <td>Venda - 12/06/22</td>
-                        </tr>
+                        <tbody id="lista_estoque">
+                            {{#each produtos}}
+                                <tr class="items-prods">
+                                    {{!-- <th scope="row"> <input class="form-check-input" type="checkbox" value={{this.nome}} id="flexCheckDefault"></th> --}}
+                                    <td><a class="link-info" style="text-decoration:none;" href="/detalhes/">{{this.nome}}</a></td>
+                                    <td>{{this.marca}}</td>
+                                    <td>{{this.codProduto}}</td>
+                                    <td>{{this.quantidadeEstoque}}</td>
+                                    <td>{{this.preco_unid_compra}}</td>
+                                    <td>{{this.preco_unid_venda}}</td>
+                                    <td>{{this.setor}}</td>
+                                    <td>{{this.unidade}}</td>
+                                    <td class="btn-add">
+                                         <a href=""><button type="button" class="btn btn-info" style="margin-left: 2px;"><i class="bi bi-pencil-fill"></i></button></a>
+                                         <a href="/{{this.codProduto}}"><button type="button" class="btn btn-danger" style="margin-left: 2px;"><img src="/images/lata-lixo.png" alt="lata-lixo" style="width: 20px; padding: 1px;"></button></a>
+                                    </td>
+                                </tr>
+                            {{/each}}
                         </tbody>
                     </table>
             </div>
         </div>
     </div>
+    <script src="/javascripts/index_behaviours.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
