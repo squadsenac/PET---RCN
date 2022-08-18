@@ -56,7 +56,6 @@ function inserirProduto(nome, marca, qtd, setor, unid, preco_compra, preco_venda
     }else{
         console.log("Produto existente. Insira outro ou mude o nome.")
     }
-
    
 }
 

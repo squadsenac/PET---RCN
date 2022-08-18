@@ -32,7 +32,8 @@
     
             <div class="col-6" id="btn-add"> 
                 <button type="button" class="btn btn-primary">+ Novo</button>
-                <button type="button" class="btn btn-danger"><img src="/images/lata-lixo.png" alt="lata-lixo" style="width: 20px; padding: 1px;"></button>
+                <button type="button" class="btn btn-info" style="margin-left: 2px;"><i class="bi bi-pencil-fill"></i></button>
+                <button type="button" class="btn btn-danger" style="margin-left: 2px;"><img src="/images/lata-lixo.png" alt="lata-lixo" style="width: 20px; padding: 1px;"></button>
             </div>
         </div>
     </div>
@@ -48,42 +49,28 @@
                             <th scope="col">MARCA</th>
                             <th scope="col">COD.</th>
                             <th scope="col">QTD.</th>
+                            <th scope="col">PREÇO/COMPRA</th>
+                            <th scope="col">PREÇO/VENDA</th>
                             <th scope="col">SETOR</th>
                             <th scope="col">UNID.</th>
                             <th scope="col">ULTIMA TRANSAÇÂO</th>
                         </tr>
                         </thead>
-                        <tbody>
-                            <tr class="items-prods">
-                                <th scope="row"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                                <td><a class="link-info" style="text-decoration:none;" href="/detalhes/" target="_self">Baby Bliss</a></td>
-                                <td>Jurema</td>
-                                <td>2347</td>
-                                <td>43</td>
-                                <td>Eletro</td>
-                                <td>unitário</td>
-                                <td>Venda - 12/06/22</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                                <td><a class="link-info" style="text-decoration:none;" href="/detalhes/" target="_self">Liquidificador</a></td>
-                                <td>Mondial</td>
-                                <td>2500</td>
-                                <td>50</td>
-                                <td>Eletro</td>
-                                <td>unitário</td>
-                                <td>Reposição - 12/06/22</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                                <td ><a class="link-info" style="text-decoration:none;" href="/detalhes/" target="_self">Faca Elétrica</a></td>
-                                <td>Wallita</td>
-                                <td>7659</td>
-                                <td>12</td>
-                                <td>Eletro</td>
-                                <td>unitário</td>
-                                <td>Venda - 12/06/22</td>
-                            </tr>
+                        <tbody id="lista_estoque">
+                            {{#each produtos}}
+                                <tr class="items-prods">
+                                    <th scope="row"> <input class="form-check-input" type="checkbox" value={{this.nome}} id="flexCheckDefault"></th>
+                                    <td><a class="link-info" style="text-decoration:none;" href="/detalhes/" target="_self">{{this.nome}}</a></td>
+                                    <td>{{this.marca}}</td>
+                                    <td>{{this.codProduto}}</td>
+                                    <td>{{this.quantidadeEstoque}}</td>
+                                    <td>{{this.preco_unid_compra}}</td>
+                                    <td>{{this.preco_unid_venda}}</td>
+                                    <td>{{this.setor}}</td>
+                                    <td>{{this.unidade}}</td>
+                                    <td>{{this.ultimaTrans}}</td>
+                                </tr>
+                            {{/each}}
                         </tbody>
                     </table>
             </div>

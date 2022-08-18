@@ -25,22 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-//database
-
-const con = mysql.createConnection(
-  {
-      host: "127.0.0.1",
-      user: "root",
-      password: "root123",
-      database: "formulario",
-  }
-);
-
-con.connect((error) => {
-  if(error) throw error;
-  console.log('Conexão estabelecida com sucesso: id ' + con.threadId);
-});
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
