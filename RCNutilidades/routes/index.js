@@ -49,24 +49,32 @@ router.get('/compras/', function(req, res, next) {
     } else{
       console.log("Dados de compras obtidos com sucesso.");
       console.log(rows);
-      res.render('vendas', { title: 'RCN Utilidades - Estoque', compras: rows});
+      res.render('compras', { title: 'RCN Utilidades - Estoque', compras: rows});
     }
   });  
 });
 
 router.get('/detalhes/', function(req, res, next) {
-  res.render('detalhes', { title: 'RCN Utilidades - Estoque' });
+  rcn_db.query('SELECT * FROM produto', (err, rows) => {
+    if (!err) {
+      res.render('detalhes', { title: 'RCN Utilidades - Estoque', rows });
+    } else {
+      console.log(err);
+    }
+    console.log('Dados da tabela de produtos: \n', rows);
+  });
+  
 });
 
 router.get('/detalhes/detalhes_dados/:codProduto', function(req, res, next) {
 
-  connection.query('SELECT * FROM user WHERE codProduto = ?', [req.params.codProduto], (err, rows) => {
+  rcn_db.query('SELECT * FROM produto WHERE codProduto = ?', [req.params.codProduto], (err, rows) => {
     if (!err) {
       res.render('detalhes_dados', { title: 'RCN Utilidades - Estoque', rows });
     } else {
       console.log(err);
     }
-    console.log('The data from user table: \n', rows);
+    console.log('Dados da tabela de produtos: \n', rows);
   });
   
 });

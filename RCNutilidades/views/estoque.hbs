@@ -32,8 +32,6 @@
     
             <div class="col-6" id="btn-add"> 
                 <button type="button" class="btn btn-primary">+ Novo</button>
-                <button type="button" class="btn btn-info" style="margin-left: 2px;"><i class="bi bi-pencil-fill"></i></button>
-                <button type="button" class="btn btn-danger" style="margin-left: 2px;"><img src="/images/lata-lixo.png" alt="lata-lixo" style="width: 20px; padding: 1px;"></button>
             </div>
         </div>
     </div>
@@ -44,7 +42,7 @@
                     <table class="table table-hover">
                         <thead>
                         <tr class="header-prods">
-                            <th scope="col"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                            {{!-- <th scope="col"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th> --}}
                             <th scope="col">NOME</th>
                             <th scope="col">MARCA</th>
                             <th scope="col">COD.</th>
@@ -53,14 +51,14 @@
                             <th scope="col">PREÇO/VENDA</th>
                             <th scope="col">SETOR</th>
                             <th scope="col">UNID.</th>
-                            <th scope="col">ULTIMA TRANSAÇÂO</th>
+                            <th scope="col">AÇÕES</th>
                         </tr>
                         </thead>
                         <tbody id="lista_estoque">
                             {{#each produtos}}
                                 <tr class="items-prods">
-                                    <th scope="row"> <input class="form-check-input" type="checkbox" value={{this.nome}} id="flexCheckDefault"></th>
-                                    <td><a class="link-info" style="text-decoration:none;" href="/detalhes/" target="_self">{{this.nome}}</a></td>
+                                    {{!-- <th scope="row"> <input class="form-check-input" type="checkbox" value={{this.nome}} id="flexCheckDefault"></th> --}}
+                                    <td><a class="link-info" style="text-decoration:none;" href="/detalhes/">{{this.nome}}</a></td>
                                     <td>{{this.marca}}</td>
                                     <td>{{this.codProduto}}</td>
                                     <td>{{this.quantidadeEstoque}}</td>
@@ -68,7 +66,10 @@
                                     <td>{{this.preco_unid_venda}}</td>
                                     <td>{{this.setor}}</td>
                                     <td>{{this.unidade}}</td>
-                                    <td>{{this.ultimaTrans}}</td>
+                                    <td class="btn-add">
+                                         <a href=""><button type="button" class="btn btn-info" style="margin-left: 2px;"><i class="bi bi-pencil-fill"></i></button></a>
+                                         <a href="/{{this.codProduto}}"><button type="button" class="btn btn-danger" style="margin-left: 2px;"><img src="/images/lata-lixo.png" alt="lata-lixo" style="width: 20px; padding: 1px;"></button></a>
+                                    </td>
                                 </tr>
                             {{/each}}
                         </tbody>
