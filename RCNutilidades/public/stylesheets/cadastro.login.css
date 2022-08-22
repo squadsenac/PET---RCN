@@ -1,0 +1,79 @@
+/*juntei cadastro e login no mesmo index, as classes são as mesmas:
+
+form --> mb-1 e mb-2
+cardy-body --> form-body
+card-group --> form-group
+group-btn --> form-btn
+
+*/
+
+
+
+body{
+    background-color: rgb(239, 239, 239);
+    font-family: sans-serif;
+}
+
+.mb-1{                 /*cadastro*/
+    width: 700px;
+    margin: auto;
+    padding-top: 20px;
+
+}
+.mb-2{                   /*login*/
+    width: 400px;
+    margin: auto;
+    padding-top: 20px;
+}
+.card{      /*talve precise mudar*/
+    box-shadow: 10px 10px 10px rgb(175, 171, 171);
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 5px;
+
+}
+.form-body{
+    text-align:center;
+}
+
+
+.form-group{
+  margin-bottom: 10px;  
+}
+.form-group> input{
+    border-radius: 5px;
+    width: 100%;
+    height: 25px;
+    padding-left:5px;
+    outline:0;
+    }
+.form-group> button{
+  
+  width: 100px;
+  border-radius: 10px;
+  padding: 15px;
+  color: rgb(255, 255, 255);
+  border: 0px;
+  outline: 0;
+}
+.imglogin{
+  border-radius: 90px;  
+  width: 100px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.683);
+  margin-block-end: 8px;
+}
+.titulo{
+color: black;
+
+}
+.form-group> label{
+    width: 100px;
+    color: gray;
+    display: block;
+
+}
+.form-btn{
+    width: 400px;
+    margin: auto;
+    padding-top: 100px;
+}

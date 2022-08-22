@@ -54,16 +54,15 @@ router.get('/compras/', function(req, res, next) {
   });  
 });
 
-router.get('/detalhes/', function(req, res, next) {
-  rcn_db.query('SELECT * FROM produto', (err, rows) => {
+router.get('/detalhes/:codProduto', function(req, res, next) {
+  rcn_db.query('SELECT * FROM produto WHERE codProduto = ?', [req.params.codProduto], (err, rows) => {
     if (!err) {
-      res.render('detalhes', { title: 'RCN Utilidades - Estoque', rows });
+      res.render('detalhes', { title: 'Detalhes do produto', produto: rows[0]});
     } else {
       console.log(err);
     }
     console.log('Dados da tabela de produtos: \n', rows);
   });
-  
 });
 
 router.get('/detalhes/detalhes_dados/:codProduto', function(req, res, next) {
@@ -79,11 +78,20 @@ router.get('/detalhes/detalhes_dados/:codProduto', function(req, res, next) {
   
 });
 
-router.get('/detalhes/detalhes_header/', function(req, res, next) {
-  res.render('detalhes_header', { title: 'RCN Utilidades - Estoque' });
-});
+/* router.get('/detalhes/detalhes_dados/', function(req, res, next) {
 
-router.get('/detalhes/detalhes_itens/', function(req, res, next) {
+  rcn_db.query('SELECT * FROM produto', (err, rows) => {
+    if (!err) {
+      res.render('detalhes_dados', { title: 'RCN Utilidades - Estoque', rows });
+    } else {
+      console.log(err);
+    }
+    console.log('Dados da tabela de produtos: \n', rows);
+  });
+  
+}); */
+
+router.get('/detalhes/detalhes_itens/:codProduto', function(req, res, next) {
   var sql = `SELECT * FROM produto`;
   rcn_db.query(sql, function(err, rows){
     if(err){
