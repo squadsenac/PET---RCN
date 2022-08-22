@@ -58,7 +58,7 @@
                             {{#each produtos}}
                                 <tr class="items-prods">
                                     {{!-- <th scope="row"> <input class="form-check-input" type="checkbox" value={{this.nome}} id="flexCheckDefault"></th> --}}
-                                    <td><a class="link-info" style="text-decoration:none;" href="/detalhes/">{{this.nome}}</a></td>
+                                    <td><a class="link-info" style="text-decoration:none;" href="/detalhes/{{this.codProduto}}">{{this.nome}}</a></td>
                                     <td>{{this.marca}}</td>
                                     <td>{{this.codProduto}}</td>
                                     <td>{{this.quantidadeEstoque}}</td>

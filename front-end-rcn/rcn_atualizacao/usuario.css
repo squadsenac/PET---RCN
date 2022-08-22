@@ -1,0 +1,120 @@
+body{
+    color:black;
+    background-color: white;
+    font-size: 15px;
+    font-family:'Arial Narrow Bold', sans-serif;
+    padding-left: 10px;
+    margin: auto;
+    }
+    
+    .header_geral{
+        background-color: darkgray;
+        max-height: 90px;
+    }
+    
+    .icones_header{
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items:center;
+        padding: 15px; 
+        margin: auto;
+    }
+    
+    .icones_header .img_header{
+        width: 50px;
+        margin-left: 75px;
+        background-color: white;
+        border-radius: 50px;
+    }
+    
+    .labels_headers{
+        text-align: center;
+        display: flex;
+        font-size: 13px;
+        color: black;
+        flex-direction: row;
+        transform: translateX(69px);
+    }
+    
+    .card-body{
+        text-align: center !important;
+        padding: 5px; 
+    }
+    
+    .card{
+        background-color: transparent;
+        border: 0px;
+        padding: 0;
+    }
+    
+    .menu_nav{
+        display: flex;
+        font-size: 13px;
+        color: black !important;
+        background-color: darkgrey;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 0px;
+        height: 26px;
+    }
+    
+    .nav-link{
+        color: black;
+        transform: translateY(-5px);
+    }
+    
+    .lista-fornecedores{
+        border-top: 1px solid darkgray;
+        margin-top: 5px;
+    }
+    .lista-clientes{
+        border-top: 1px solid darkgray;
+        margin-top: 5px; 
+    }
+    
+    #btn-add{
+        display: flex;
+        justify-content:flex-end;
+        padding-left: 0px;
+        padding-right: 19px;
+        padding-bottom: 5px;
+    }
+    
+    #btn-organizar{
+        background-color: transparent;
+        color: black;
+        border: 0px;
+        font-weight: 600;
+        transform: translateY(9px);
+        margin-top: 25px;
+        margin-top: 7px;
+    }
+    
+    .nome-pagina{
+        display: flex;
+        justify-content:center;
+        margin-top: 10px;
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: auto;
+       
+    }
+    
+    .header-usuarios{
+        background-color: lightgray; 
+
+    }
+    .modal {
+        width: 300px;
+    }
+    .modal-content {
+        width: 300px;
+    }
+    .list-group-item:hover {
+        background-color: rgba(136, 136, 136, 0.164) !important;
+    }
+    .btn-fechar{
+        background-color: black;
+    }
+      
