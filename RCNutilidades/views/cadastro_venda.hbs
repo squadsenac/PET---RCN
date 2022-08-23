@@ -16,7 +16,7 @@
     <div class="container"></div>
     <div class="row"></div>
     
-    <form class="mb-3"action="#">
+    <form class="mb-3"action="/criar_venda/" method="post">
     <div class="card">
         <div class="formFile">
            <h2 class="title>">Cadastro de Venda</h2>
@@ -26,39 +26,31 @@
                         <input type="text" class="form-control" name="nome" id="nome">
                         </div>
 
-                        <div class="form-label">
-                        <label for="PLU">PLU: </label>
-                        <input type="text" class="form-control" name="plu" id="PLU">
-                        </div>
-
-                        <div class="form-label">
-                        <label for="setor">Setor: </label>
-                        <input type="text" class="form-control" name="setor" id="setor">
-                        </div>
-
-                        <div class="form-label">
+                     {{!--    <div class="form-label">
                         <label for="UnidadeDeMedida">Unidade de medida (Un./Kg): </label>
                         <input type="number" class="form-control" name="unid.medida" id="UnidadeDeMedida"> 
-                        </div>
-                  
-                        <div class="form-label">
-                        <label for="data">Data: </label>
-                        <input type="date" class="form-control" name="data" id="data"> 
-                        </div>
+                        </div> --}}
+                        
 
                         <div class="form-label">
                         <label for="unidadesAdquiridas">Unidades Vendidas: </label> 
-                        <input type="number" class="form-control" name="und.ad" id="unidadesAdquiridas"> 
+                        <input type="number" class="form-control" name="quant" id="unidadesVendidas"> 
+                        </div>
+
+                        
+                        <div class="form-label">
+                        <label for="setor">Forma de Pagamento: </label>
+                        <input type="text" class="form-control" name="formapag" id="formapag">
                         </div>
 
                         <div class="form-label">
-                        <label for="precoDeCompra">Preço de Compra: </label>
-                        <input type="text" class="form-control" name="preco" id="precoDeCompra">
+                        <label for="precoDeCompra">Preço de Venda: </label>
+                        <input type="text" class="form-control" name="prevenda" id="precoDeCompra">
                         </div>
 
                         <div class="form-label">
                         <label for="valorTotal">Valor Total: </label>
-                        <input type="text" class="form-control" name="valor" id="valorTotal"> 
+                        <input type="text" class="form-control" name="total" id="valorTotal"> 
                         </div>
     
                     <br>
