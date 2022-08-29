@@ -21,13 +21,28 @@
            <h2 class="title>">Editar Registro de Venda:</h2>
         </div>
                         <div class="form-label">
+                        <label for="nome">Codigo de Venda: </label>
+                        <input type="number" class="form-control" name="codVenda" id="codVenda" readonly="true" value={{venda.codVenda}}>
+                        </div>
+
+                        <div class="form-label">
+                        <label for="nome">Codigo de Produto: </label>
+                        <input type="number" class="form-control" name="codProduto" id="codProduto" readonly="true" value={{venda.codProduto}}>
+                        </div>
+
+                        <div class="form-label">
                         <label for="nome">Nome: </label>
                         <input type="text" class="form-control" name="nome" id="nome" value={{venda.nome}}>
                         </div>
 
                         <div class="form-label">
-                        <label for="marca">Quantidade Vendida: </label>
+                        <label for="marca">Quantidade Vendida Atual: </label>
                         <input type="text" class="form-control" name="quant" id="quant" value={{venda.quantidadeVendida}}>
+                        </div>
+
+                        <div class="form-label">
+                        <label for="marca">Quantidade Vendida Nova: </label>
+                        <input type="text" class="form-control" name="quantNova" id="quantNova" value="">
                         </div>
 
                         <div class="form-label">

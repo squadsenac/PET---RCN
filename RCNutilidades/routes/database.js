@@ -8,6 +8,7 @@ const con = mysql.createConnection(
         user: "root",
         password: "root123",
         database: "teste_rcn",
+        multipleStatements: true,
     }
   );
   

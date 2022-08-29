@@ -21,13 +21,28 @@
            <h2 class="title>">Editar Registro de Compra:</h2>
         </div>
                         <div class="form-label">
+                        <label for="nome">Código da Compra: </label>
+                        <input type="number" class="form-control" name="codCompra" id="codCompra" readonly="true" value={{compra.codCompra}}>
+                        </div>
+
+                        <div class="form-label">
+                        <label for="nome">Código do Produto: </label>
+                        <input type="number" class="form-control" name="codProduto" id="codProduto" readonly="true" value={{compra.codProd}}>
+                        </div>
+
+                        <div class="form-label">
                         <label for="nome">Nome: </label>
                         <input type="text" class="form-control" name="nome" id="nome" value={{compra.nome}}>
                         </div>
 
                         <div class="form-label">
-                        <label for="marca">Quantidade Comprada: </label>
-                        <input type="text" class="form-control" name="quant" id="quant" value={{compra.quantidadeComprada}}>
+                        <label for="marca">Quantidade Comprada Atual: </label>
+                        <input type="text" class="form-control" name="quant" id="quant" readonly="true" value={{compra.quantidadeComprada}}>
+                        </div>
+
+                        <div class="form-label">
+                        <label for="marca">Quantidade Comprada Nova: </label>
+                        <input type="text" class="form-control" name="quantNova" id="quant" value="">
                         </div>
 
                          <div class="form-label">
@@ -42,7 +57,7 @@
 
                         <div class="form-label">
                         <label for="precoDeCompra">Preço de Compra(Unid): </label>
-                        <input type="text" class="form-control" name="prevenda" id="precoDeVenda" value={{compra.preco_unid}}>
+                        <input type="text" class="form-control" name="precompra" id="precoDeCompra" value={{compra.preco_unid}}>
                         </div>
 
                          <div class="form-label">
@@ -70,7 +85,7 @@
                             <td>
         
                             <div class="form-label btn">
-                                 <a href="/index/"></a><button style="background-color: #00000036;" type="" onclick="">Cancelar</button>
+                                 <a href="/compras/"></a><button style="background-color: #00000036;" type="" onclick="">Cancelar</button>
                                  </div>   
                             </td>       
                             </tr>

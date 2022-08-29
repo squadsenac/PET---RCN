@@ -99,6 +99,10 @@ router.get('/usuarios/', function(req, res, next) {
   res.render('usuarios', { title: 'RCN Utilidades - Estoque' });
 });
 
+router.get('/clientes/', function(req, res, next) {
+  res.render('clientes', { title: 'RCN Utilidades - Estoque' });
+});
+
 //CRUD - Produtos
 
 router.get('/cadastro_produto/', function(req, res, next) {
@@ -184,6 +188,31 @@ router.get('/deletar_prod/:codProduto', function(req, res, next) {
 
 //CRUD - Vendas
 
+router.get('/buscar_produto/', function(req, res, next) {  
+      res.render('buscar_produto', { title: 'RCN Utilidades - Estoque'});
+});
+
+router.post('/busca_de_produto/', function(req, res, next) {
+  var nomeBusca = req.body.search;
+  var sql = `SELECT * FROM produto WHERE nome LIKE "${nomeBusca}" OR marca LIKE "${nomeBusca}" OR codProduto LIKE "${nomeBusca}"`;
+  //var sql = `SELECT * FROM produto WHERE codProduto = "${nomeBusca}"`;
+  rcn_db.query(sql, function(err, rows){
+    if(err){
+      console.log(err);
+      console.log("Tabela inválida. Tente novamente.");
+    } else{
+      console.log("Dados do produto obtidos com sucesso.");
+      console.log(rows);
+      if(nomeBusca){
+        res.render('cadastro_venda', { title: 'RCN Utilidades - Estoque', produto: rows[0], busca:true});
+      }else{
+        res.render('cadastro_venda', { title: 'RCN Utilidades - Estoque', produto: rows[0], busca:false});
+      }
+    } 
+  });  
+ 
+});
+
 router.get('/vendas/', function(req, res, next) {
   var sql = `SELECT * FROM venda`;
   rcn_db.query(sql, function(err, rows){
@@ -200,18 +229,20 @@ router.get('/vendas/', function(req, res, next) {
 });
 
 router.get('/cadastro_venda/', function(req, res, next) {
-  res.render('cadastro_venda', { title: 'RCN Utilidades - Estoque' });
+  res.render('cadastro_venda', { title: 'RCN Utilidades - Estoque'});
 });
 
 router.post('/criar_venda/', function(req, res, next) {
   var nome = req.body.nome;
   var quant = req.body.quant;
+  var codProd = req.body.codProduto;
   var formapag = req.body.formapag;
   var preVend = req.body.prevenda;
   var total = req.body.total;
 
-  var sql = `INSERT INTO venda (codVenda, nome, quantidadeVendida, Forma_Pag, preco_unid, total, Data_hora) VALUES 
-  (NULL, "${nome}", "${quant}","${formapag}","${preVend}","${total}", NOW())`;
+  var sql = `INSERT INTO venda (codVenda, codProduto, nome, quantidadeVendida, Forma_Pag, preco_unid, total, Data_hora) VALUES 
+  (NULL,"${codProd}", "${nome}", "${quant}","${formapag}","${preVend}","${total}", NOW()); UPDATE produto SET quantidadeEstoque = quantidadeEstoque - ${quant} 
+  WHERE codProduto = "${codProd}"`;
       rcn_db.query(sql, function(err, rows){
         if(err){
           console.log(err);
@@ -227,7 +258,7 @@ router.post('/criar_venda/', function(req, res, next) {
 
 router.get('/editar_venda/:codVenda', function(req, res, next) {
   var codigo = req.params.codVenda;
-  var sql = `SELECT * FROM venda WHERE codProduto=${codigo}`;
+  var sql = `SELECT * FROM venda WHERE codVenda="${codigo}"`;
       rcn_db.query(sql, function(err, rows){
         if(err){
           console.log(err);
@@ -235,7 +266,7 @@ router.get('/editar_venda/:codVenda', function(req, res, next) {
         } else{
           console.log("Dados carregados com sucesso.");
           console.log(rows);
-          res.render('editar_venda', { title: 'RCN Utilidades - Estoque', venda: rows[0]});
+          res.render('editar_vendas', { title: 'RCN Utilidades - Estoque', venda: rows[0]});
         } 
       
     });
@@ -243,14 +274,16 @@ router.get('/editar_venda/:codVenda', function(req, res, next) {
 
 router.post('/editar_venda/edit/:codVenda', function(req, res, next) {
   var nome = req.body.nome;
-  var quant = req.body.quant;
+  var quantAtual = req.body.quant;
+  var quantNova = req.body.quantNova;
+  var quantAjust = quantNova - quantAtual;
   var formapag = req.body.formapag;
   var preVend = req.body.prevenda;
   var total = req.body.total;
   var codVenda = req.params.codVenda;
-  nome, quantidadeVendida, Forma_Pag, preco_unid, total, Data_hora
-  var sql = `UPDATE produto SET nome = "${nome}", quantidadeVendida= "${quant}", Forma_Pag = "${formapag}", preco_unid = "${preVend}", total = "${total}", Data_hora = NOW() WHERE
-  codVenda = ${codVenda}`;
+  var codProduto = req.params.codProduto;
+  var sql = `UPDATE venda SET nome = "${nome}", quantidadeVendida= "${quant}", Forma_Pag = "${formapag}", preco_unid = "${preVend}", total = "${total}", Data_hora = NOW() WHERE
+  codVenda = "${codVenda}"; UPDATE produto SET quantidadeEstoque = quantidadeEstoque + ${quantAjust} WHERE codProduto = "${codProduto}"`;
       rcn_db.query(sql, function(err, rows){
         if(err){
           console.log(err);
@@ -262,11 +295,23 @@ router.post('/editar_venda/edit/:codVenda', function(req, res, next) {
         } 
       
     });
+
+    /* rcn_db.query(sql_update, function(err, rows){
+      if(err){
+        console.log(err);
+        console.log("Tabela inválida. Tente novamente.");
+      } else{
+        console.log("Produto atualizado com sucesso.");
+        console.log(rows);
+        res.redirect("/vendas/");
+      } 
+    
+  }); */
 });
 
 router.get('/deletar_venda/:codVenda', function(req, res, next) {
-  var codigo = req.params.codProduto;
-  var sql = `DELETE FROM produto WHERE codVenda=${codigo}`;
+  var codigo = req.params.codVenda;
+  var sql = `DELETE FROM venda WHERE codVenda=${codigo}`;
       rcn_db.query(sql, function(err, rows){
         if(err){
           console.log(err);
@@ -281,6 +326,27 @@ router.get('/deletar_venda/:codVenda', function(req, res, next) {
 });
 
 //CRUD - Compras
+
+router.post('/busca_de_produto_compras/', function(req, res, next) {
+  var nomeBusca = req.body.search;
+  var sql = `SELECT * FROM produto WHERE nome LIKE "${nomeBusca}" OR marca LIKE "${nomeBusca}" OR codProduto LIKE "${nomeBusca}"`;
+  //var sql = `SELECT * FROM produto WHERE codProduto = "${nomeBusca}"`;
+  rcn_db.query(sql, function(err, rows){
+    if(err){
+      console.log(err);
+      console.log("Tabela inválida. Tente novamente.");
+    } else{
+      console.log("Dados do produto obtidos com sucesso.");
+      console.log(rows);
+      if(nomeBusca){
+        res.render('cadastro_compra', { title: 'RCN Utilidades - Estoque', produto: rows[0], busca:true});
+      }else{
+        res.render('cadastro_compra', { title: 'RCN Utilidades - Estoque', produto: rows[0], busca:false});
+      }
+    } 
+  });  
+ 
+});
 
 router.get('/compras/', function(req, res, next) {
   var sql = `SELECT * FROM compra`;
@@ -297,10 +363,21 @@ router.get('/compras/', function(req, res, next) {
 });
 
 router.get('/cadastro_compra/', function(req, res, next) {
-  res.render('cadastro_compra', { title: 'RCN Utilidades - Estoque' });
+  var sql = `SELECT * FROM produto`;
+  rcn_db.query(sql, function(err, rows){
+    if(err){
+      console.log(err);
+      console.log("Tabela inválida. Tente novamente.");
+    } else{
+      console.log("Dados de produtos obtidos com sucesso.");
+      console.log(rows);
+      res.render('cadastro_compra', { title: 'RCN Utilidades - Estoque', produto: rows});
+    } 
+  }); 
 });
 
 router.post('/criar_compra/', function(req, res, next) {
+  var codProduto = req.body.codProduto;
   var nome = req.body.nome;
   var quant = req.body.quant;
   var forn = req.body.fornecedor;
@@ -308,8 +385,9 @@ router.post('/criar_compra/', function(req, res, next) {
   var preComp = req.body.precompra;
   var total = req.body.total;
 
-  var sql = `INSERT INTO compra (codVenda, nome, quantidadeComprada, fornecedor, Forma_Pag, preco_unid, total, Data_hora) VALUES 
-  (NULL, "${nome}", "${quant}", "${forn}","${formapag}","${preComp}","${total}", NOW())`;
+  var sql = `INSERT INTO compra (codCompra, codProd, nome, quantidadeComprada, fornecedor, Forma_Pag, preco_unid, total, Data_hora) VALUES 
+  (NULL,${codProduto}, "${nome}", "${quant}","${forn}","${formapag}","${preComp}","${total}", NOW()); UPDATE produto SET quantidadeEstoque = quantidadeEstoque + ${quant} 
+  WHERE codProduto = "${codProduto}"`;
       rcn_db.query(sql, function(err, rows){
         if(err){
           console.log(err);
@@ -325,7 +403,7 @@ router.post('/criar_compra/', function(req, res, next) {
 
 router.get('/editar_compra/:codCompra', function(req, res, next) {
   var codigo = req.params.codCompra;
-  var sql = `SELECT * FROM compra WHERE codCompra=${codigo}`;
+  var sql = `SELECT * FROM compra WHERE codCompra=${codigo};`;
       rcn_db.query(sql, function(err, rows){
         if(err){
           console.log(err);
@@ -341,14 +419,18 @@ router.get('/editar_compra/:codCompra', function(req, res, next) {
 
 router.post('/editar_compra/edit/:codCompra', function(req, res, next) {
   var nome = req.body.nome;
-  var quant = req.body.quant;
+  var quantAtual = req.body.quant;
+  var quantNova = req.body.quantNova;
+  var ajusteQuant = quantNova - quantAtual;
   var forn = req.body.fornecedor;
   var formapag = req.body.formapag;
   var preComp = req.body.precompra;
   var total = req.body.total;
   var codCompra = req.params.codCompra;
-  var sql = `UPDATE produto SET nome = "${nome}", quantidadeComprada= "${quant}", fornecedor = "${forn}", Forma_Pag = "${formapag}", preco_unid = "${preComp}", total = "${total}", Data_hora = NOW() WHERE
-  codVenda = ${codCompra}`;
+  var codProd = req.body.codProduto;
+
+  var sql = `UPDATE compra SET nome = "${nome}", quantidadeComprada= "${quantNova}", fornecedor = "${forn}", Forma_Pag = "${formapag}", preco_unid = "${preComp}", total = "${total}", Data_hora = NOW() WHERE
+  codCompra = ${codCompra}; UPDATE produto SET quantidadeEstoque = quantidadeEstoque + "${ajusteQuant}" WHERE codProduto = "${codProd}"`;
       rcn_db.query(sql, function(err, rows){
         if(err){
           console.log(err);
@@ -364,7 +446,7 @@ router.post('/editar_compra/edit/:codCompra', function(req, res, next) {
 
 router.get('/deletar_compra/:codCompra', function(req, res, next) {
   var codigo = req.params.codCompra;
-  var sql = `DELETE FROM produto WHERE codCompra=${codigo}`;
+  var sql = `DELETE FROM compra WHERE codCompra=${codigo}`;
       rcn_db.query(sql, function(err, rows){
         if(err){
           console.log(err);

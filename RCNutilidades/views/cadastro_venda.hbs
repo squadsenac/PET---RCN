@@ -9,77 +9,103 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 </head>
-<body>
-    <title>Nova Venda</title>
-</head>
-<body>
-    <div class="container"></div>
-    <div class="row"></div>
-    
-    <form class="mb-3"action="/criar_venda/" method="post">
-    <div class="card">
-        <div class="formFile">
-           <h2 class="title>">Cadastro de Venda</h2>
-        </div>
-                        <div class="form-label">
-                        <label for="nome">Nome: </label>
-                        <input type="text" class="form-control" name="nome" id="nome">
+<body>           
+
+            <form class="mb-4" role="search" action="/busca_de_produto/" method="post">
+
+                    <div class="card2">
+
+                            <div class="formFile">
+                                <h4 class="title>">Buscar Produto</h4>
+                            </div>
+
+                            <p class="instru_trans">Procure o produto que será vendido. Cadastre o produto<br> 
+                                antes de gerar o registro de compra ou venda. </p>
+                           
+
+                        <div class="elemBusca">
+
+                            <div class="nomeBusca">
+                                <input type="search" name="search" id="nome" class="campoBusca">
+                            </div>
+
+                            <div class="botaoBuscar">
+                                <button type="submit">Buscar</button>
+                            </div>
+
                         </div>
 
-                     {{!--    <div class="form-label">
-                        <label for="UnidadeDeMedida">Unidade de medida (Un./Kg): </label>
-                        <input type="number" class="form-control" name="unid.medida" id="UnidadeDeMedida"> 
-                        </div> --}}
-                        
+                    </div>
 
-                        <div class="form-label">
-                        <label for="unidadesAdquiridas">Unidades Vendidas: </label> 
-                        <input type="number" class="form-control" name="quant" id="unidadesVendidas"> 
-                        </div>
+            </form>
 
-                        
-                        <div class="form-label">
-                        <label for="setor">Forma de Pagamento: </label>
-                        <input type="text" class="form-control" name="formapag" id="formapag">
-                        </div>
+  {{#if busca}}
+            <form class="mb-3"action="/criar_venda/" method="post"> 
+                    <div class="card">  
+                            <div class="formFile">
+                            <h2 class="title>">Cadastro de Venda</h2>
+                            </div>
 
-                        <div class="form-label">
-                        <label for="precoDeCompra">Preço de Venda: </label>
-                        <input type="text" class="form-control" name="prevenda" id="precoDeCompra">
-                        </div>
+                            <div class="form-label">
+                            <label for="unidadesAdquiridas">Código: </label> 
+                            <input type="text" class="form-control" name="codProduto" id="v_codProd" readonly="true" value={{produto.codProduto}}> 
+                            </div>
 
-                        <div class="form-label">
-                        <label for="valorTotal">Valor Total: </label>
-                        <input type="text" class="form-control" name="total" id="valorTotal"> 
-                        </div>
-    
-                    <br>
-                    <div>
-                        <table>
-                            <tr>
-                            <td>
+                            <div class="form-label">
+                            <label for="unidadesAdquiridas">Nome: </label> 
+                            <input type="text" class="form-control" name="nome" id="unidadesVendidas" readonly="true" value={{produto.nome}}> 
+                            </div>
 
-                             <div class="form-label btn">
-                                <button type="submit">Salvar</button>
+                            <div class="form-label">
+                            <label for="unidadesAdquiridas">Marca: </label> 
+                            <input type="text" class="form-control" name="marca" id="unidadesVendidas" readonly="true" value={{produto.marca}}> 
+                            </div>
+
+                            <div class="form-label">
+                            <label for="precoDeCompra">Preço de Venda: </label>
+                            <input type="text" class="form-control" name="prevenda" id="precoDeVenda" readonly="true" value={{produto.preco_unid_venda}} >
+                            </div>
+                
+                            <div class="form-label">
+                            <label for="unidadesAdquiridas">Unidades Vendidas: </label> 
+                            <input type="number" class="form-control" name="quant" onclick = "calcularTotal()" id="unidadesVendidas"> 
+                            </div>
+                            
+                            <div class="form-label">
+                            <label for="setor">Forma de Pagamento: </label>
+                            <input type="text" class="form-control" name="formapag" id="formapag">
+                            </div>
+
+                            <div class="form-label">
+                            <label for="valorTotal">Valor Total: </label>
+                            <input type="text" class="form-control" name="total" id="valorTotal" value=""> 
+                            </div>
+
+                            {{!--    <div class="form-label">
+                            <label for="UnidadeDeMedida">Unidade de medida (Un./Kg): </label>
+                            <input type="number" class="form-control" name="unid.medida" id="UnidadeDeMedida"> 
+                            </div> --}} 
+                        <br>
+                            <div class="btn_cadastro">
+                              
+                                <div class="form-label btn">
+                                    <button type="submit">Salvar</button>
                                 </div>     
-                            </td>
-                            <td>
-        
-                            <div class="form-label btn">
-                                 <button style="background-color: #00000036;" type="submit">Cancelar</button>
-                                 </div>   
-                            </td>       
-                            </tr>
-                        </table>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</form>
+                               
+                                <div class="form-label btn">
+                                    <a href="/vendas/"><button class="btn_cancel" type="button">Cancelar</button></a>
+                                </div>   
+                              
+                            </div>
+                    </div>
+                
+            </form>
+
+{{/if}}
 
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="/javascripts/forms_transacoes.js"></script>
 
 </body>
 </html>
