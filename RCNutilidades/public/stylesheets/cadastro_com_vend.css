@@ -2,26 +2,49 @@ body{
     background-color: rgba(203, 203, 203, 0.65);
     font-family: sans-serif;
 }
+
 .mb-3{
     width: 550px;
     margin:auto;
     padding-top: 20px;
     display: flex;
+    justify-content: center;
+}
+
+.mb-4{
+    width: 850px;
+    margin:auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.card2{
+    box-shadow: 10px 10px 10px rgb(175, 171, 171);
+    border: 2px lightgray solid;
+    background-color: white;
+    padding-left: 137px;
+    padding-right: 137px;
+    padding-top: 30px;
+    padding-bottom: 30px;   
+}
+
+.instru_trans{
+ font-size: 11px;
+ text-align: center;
 }
 
 .formFile{
-  margin-bottom: 20px;  
+  margin-bottom: 10px;  
   text-align: center;
-
-
 }
+
 .card{
     box-shadow: 10px 10px 10px rgb(175, 171, 171);
     background-color: rgb(241, 241, 241);
-    padding: 30px;
-
-   
+    padding: 30px;  
 }
+
 .form-label> input{
     border-radius: 3px;
     width: 100%;
@@ -30,9 +53,8 @@ body{
     outline: 0px;;
     display:flex;
     border-color: rgb(210, 202, 202);
-   
+}
 
-    }
 .form-label> button{
    background: #0075FF;
    width: 100px;
@@ -40,8 +62,7 @@ body{
    padding: 10px;
    color: rgb(255, 255, 255);
    border: 0px;
-   outline: 0;
-   
+   outline: 0;   
 }
 
 .form-label> label{
@@ -54,4 +75,28 @@ body{
     margin-bottom: 5px;  
     font-size: 15px;
     display: flex;
+    justify-content: center;
 }
+
+.botaoBuscar{
+    margin-left: 5px;
+} 
+
+.elemBusca{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.btn_cancel{
+    background-color: #00000036;
+    border-radius: 5px;
+    padding-top: 8px; 
+    padding-bottom: 8px;
+    padding-right: 16px;
+    padding-left: 16px; 
+}
+
+.btn_cadastro{
+    display: flex;
+    justify-content: center;
+} 

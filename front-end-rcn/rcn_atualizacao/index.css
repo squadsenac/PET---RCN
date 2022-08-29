@@ -188,26 +188,21 @@ body{
 
 .it_subtitulo{
     margin-top: 25px;
-
-
-
-
-
-
 }
+
+
+
 #call-area{
     background-color: lightgray;
     text-transform: uppercase ;
-
 }
+
 #call-area .row{
   display: block;
   text-align: end;
   padding-bottom: 5px;
- 
- 
-
 }
+
 #call-area #call-btn{ /*parte do relatório*/
     background-color: #FE5050;
     color: rgb(255, 255, 255);
@@ -217,9 +212,6 @@ body{
     border-color: #FE5050;
     height: 43px;
     width: 168px; 
-    margin-top: 5px; 
-
-    
-    
+    margin-top: 5px;    
 }
 
